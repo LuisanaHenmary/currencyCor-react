@@ -1,6 +1,6 @@
-import { useField } from "formik";
-import styled from "styled-components";
-import Select from "./Select";
+import { useField } from "formik"
+import styled from "styled-components"
+import Select from "./Select"
 
 const Control = styled.div`
     margin-bottom: 20px;
@@ -46,4 +46,4 @@ const FieldForm = ({ label, coinsWorld, choice, ...props }) => {
     )
 }
 
-export default FieldForm;
+export default FieldForm

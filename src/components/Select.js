@@ -1,5 +1,5 @@
-import { useField } from "formik";
-import styled from "styled-components";
+import { useField } from "formik"
+import styled from "styled-components"
 
 const SelectStyle = styled.select` 
     padding: 3px;
@@ -10,16 +10,16 @@ const SelectStyle = styled.select`
 
 `
 
-const Select = ({options,...props }) =>{
+const Select = ({ options, ...props }) => {
     const [field] = useField(props)
-    return(
+    return (
         <SelectStyle {...field} {...props}>
-            {
-            options.map((opt,i) =>
-            <option key={i}>
-                {opt} 
-            </option>)
-            }
+            {options.map((opt, i) =>
+                <option
+                    key={i}
+                >
+                    {opt}
+                </option>)}
         </SelectStyle>
     )
 }
