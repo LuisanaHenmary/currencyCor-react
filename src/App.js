@@ -42,10 +42,11 @@ const App = () => {
   const [conversions, setConversions] = useState([])
 
   const loadSymbols = useCallback(async () => {
-    const apiKey = process.env.REACT_APP_API_KEY_FIXER
+    const fixerKey = process.env.REACT_APP_API_KEY_FIXER
+    const fixerUrl = process.env.REACT_APP_URL_SYMBOLS
 
     try {
-      const resp = await axios.get(`http://data.fixer.io/api/symbols?access_key=${apiKey}`)
+      const resp = await axios.get(`${fixerUrl}?access_key=${fixerKey}`)
       setCoins(Object.keys(resp.data.symbols))
     } catch (e) {
       console.log("error", e)
@@ -66,19 +67,34 @@ const App = () => {
   return (
     <Section >
       <Container>
-        {coins.length !== 0 ? <FormConv
-          listCoins={coins}
-          submit={submitFunction}
-        /> : <Message>You have not loaded the symbols</Message>}
+        {
+          coins.length !== 0 ?
+            <FormConv
+              listCoins={coins}
+              submit={submitFunction}
+            /> :
+            <Message>
+              You have not loaded the symbols
+            </Message>
+        }
 
-        {conversions.length !== 0 ? <List conversionsList={conversions} /> : null}
+        {
+          conversions.length !== 0 ?
+            <List conversionsList={conversions} /> : null
+        }
       </Container>
 
       <Footer>
-        <p>Developer: Luisana Henmary Perez Cardenas</p>
+        <p>
+          Developer: Luisana Henmary Perez Cardenas
+        </p>
         <p>affiliations: Kunaisoft,
-          <a href="https://fixer.io" > fixer</a>,<br />
-          <a href="https://www.currencyconverterapi.com" >currencyconverterapi</a>
+          <a href="https://fixer.io">
+            fixer
+          </a>,<br />
+          <a href="https://www.currencyconverterapi.com" >
+            currencyconverterapi
+          </a>
         </p>
 
       </Footer>

@@ -8,12 +8,13 @@ const ExChangeButton = () => {
 
   const currencyConversion = useCallback(async () => {
     const apiKeyCurr = process.env.REACT_APP_API_KEY_CURRCONV
+    const currUrl = process.env.REACT_APP_URL_CONVERT
     const query = values.InCoin + '_' + values.OutCoin;
     const amount = values.InAmount !== '' ? parseFloat(values.InAmount) : 0
 
     try {
       const resp = await axios.get(
-        `https://free.currconv.com/api/v7/convert?q=${query}&compact=ultra&apiKey=${apiKeyCurr}`)
+        `${currUrl}?q=${query}&compact=ultra&apiKey=${apiKeyCurr}`)
 
       const equivalence = resp.data[query]
 

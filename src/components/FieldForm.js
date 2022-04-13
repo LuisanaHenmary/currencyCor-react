@@ -35,12 +35,14 @@ const FieldForm = ({ label, coinsWorld, choice, ...props }) => {
         <Control>
             <Label>{label}</Label>
             <Input {...field} {...props} />
-            <Select 
+            <Select
                 name={choice}
                 options={coinsWorld}
             />
             {meta.touched || meta.error ? (
-                <ErrorMessage> {meta.error} </ErrorMessage>
+                <ErrorMessage>
+                    {meta.error}
+                </ErrorMessage>
             ) : null}
         </Control>
     )
